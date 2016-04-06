@@ -1,0 +1,168 @@
+body {
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
+}
+
+#main {
+	flex: 1;
+	overflow-y: auto;
+}
+
+.page-container {
+	padding-top: 20px;
+}
+
+.page-footer {
+	height: 60px;
+	background-color: #e7e7e7;
+}
+
+.footer-content .caption {
+	font-size: 20px;
+	font-family: cursive;
+	color: rgb(180, 63, 205);
+	padding-top: 15px;
+}
+
+.page-header .actions .btn {
+	margin-top: 10px;
+	font-size: 17px;
+	font-family: monospace;
+	background-color: transparent;
+	border: none;
+	outline: none;
+}
+
+#todo-list {
+	margin-bottom: 65px;
+}
+
+.todoForm .create-todo {
+	border: none;
+	background: transparent;
+	cursor: pointer;
+	outline: none;
+	font-size: 18px;
+	color: rgb(32, 120, 207);
+}
+
+input[type="checkbox"] {
+	width: 15px;
+	height: 15px;
+}
+
+.todo-item {
+	color: #31708f;
+	background-color: #fefefe;
+	border-color: #bce8f1;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 16px;
+	font-size: 20px;
+	border: 1px solid transparent;
+	border-bottom: 1px solid #AAC0CB;
+}
+
+.container .jumbotron {
+	padding: 10px;
+	border-radius: 0;
+}
+
+.container .jumbotron h2 {
+	font-size: 24px;
+	margin-top: 10px;
+}
+
+.btn {
+	border-radius: 0;
+}
+
+.form-control {
+	height: 44px;
+	border-radius: 0;
+}
+
+.form-control:focus {
+	box-shadow: none;
+}
+
+.input-group-addon {
+	background: #fff;
+	color: #286090;
+	border-radius: 0;
+}
+
+.todo-content .form-control {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 16px;
+	font-size: 20px;
+	height: 55px;
+	box-shadow: none;
+}
+
+.todo-content .form-control:focus {
+	box-shadow: none;
+}
+
+.todo-content .btn-lg {
+	width: 200px;
+}
+
+.edit {
+	display: none;
+}
+
+.edit .glyphicon-ok-circle {
+	font-size: 20px;
+	cursor: pointer;
+	border: none;
+	background: transparent;
+	outline: none;
+	color: rgb(84, 192, 84);
+}
+
+.editing .view {
+	display: none;
+}
+
+.editing .edit {
+	display: inline-table;
+}
+
+.page-header {
+	margin: 0;
+	background: teal;
+}
+
+.page-header .logo {
+	margin-top: 10px;
+	font-family: cursive;
+	color: #fff;
+	font-size: 28px;
+	margin-bottom: 10px;
+}
+
+.todo-item .completed {
+	font-weight: 300;
+	color: rgb(186, 175, 175);
+}
+
+.error-container {
+	color: lightcoral;
+	text-align: left;
+	margin-top: 5px;
+}
+
+.error-container .error {
+	display: block;
+}
+
+.ng-invalid.ng-dirty {
+	border-color: lightcoral;
+}
+
+.ng-valid.ng-dirty {
+	border-color: lightgreen;
+}

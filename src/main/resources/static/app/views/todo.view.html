@@ -1,0 +1,61 @@
+<div class="page-container" ng-controller="TodoController">
+
+<div class="container">
+
+<div class="todo-content">
+        <!-- HEADER AND TODO COUNT -->
+        <div class="row">
+            <div class="col-sm-6 col-sm-offset-3">
+                <div class="jumbotron text-center row">
+                    <h2>You've got <span class="label label-info">{{ todos.length }}</span> things to do.</h2>
+                </div>
+            </div>
+        </div>
+        <!-- FORM TO CREATE TODOS -->
+        <div id="todo-form" class="row">
+            <div class="col-sm-6 col-sm-offset-3 text-center" style="padding:0;">
+                <form name="todoForm" class="todoForm" ng-submit="createTodo()">
+                    <div class="form-group">
+                        <!-- BIND THIS VALUE TO formData.title IN ANGULAR -->
+                        <div class="input-group">    
+                            <input type="text" class="form-control input-text" placeholder="I need to..." ng-model="formData.title" autofocus required>
+                            <!-- createToDo() WILL CREATE NEW TODOS -->
+                            <div class="input-group-addon" style="background-color:#fff;">
+                                <button type="submit" class="create-todo">Add</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- TODO LIST -->
+        <div id="todo-list" class="row" ng-show="todos.length > 0">
+            <div class="col-sm-6 col-sm-offset-3" style="border:1px solid #e8e8e8;">
+                <!-- LOOP OVER THE TODOS IN $scope.todos -->
+                <div class="todo-item row" ng-repeat="todo in todos" ng-class="{'editing': todo == editedTodo}">
+                    <div class="view row">
+                        <label class="col-sm-10" ng-class="{'completed': todo.completed}">
+                            <input type="checkbox" ng-click="saveTodo(todo)" ng-model="todo.completed"> {{ todo.title }}
+                        </label>
+                        <div class="col-sm-2">
+                            <span class="glyphicon glyphicon-pencil" style="cursor:pointer;color:rgb(80, 228, 80);" ng-click="editTodo(todo)"> 
+                            </span>  &nbsp;
+                            <span class="glyphicon glyphicon-remove-circle" ng-click="deleteTodo(todo.id)" style="cursor:pointer;color:red;">
+                            </span>
+                        </div>        
+                    </div>
+                    <form style="margin-bottom:2px;margin-right:10px;" ng-submit="saveTodo(editedTodo)">
+                        <div class="input-group edit">
+                            <input name="editInput" class="form-control " ng-model="editedTodo.title" style="color:gray;" todo-focus="todo == editedTodo">
+                            <div class="input-group-addon" style="background-color:#fff;">
+                            	<button class="glyphicon glyphicon-ok-circle"></button>
+                            </div>
+                        </div>  
+                    </form>
+                </div>    
+            </div>
+        </div>
+    </div>    
+
+    </div>
+</div>    
