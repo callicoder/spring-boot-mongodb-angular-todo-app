@@ -1,0 +1,145 @@
+/* You can add global styles to this file, and also import other style files */
+
+body {
+	font-size: 18px;
+	line-height: 1.58;
+  background: #d53369;
+  background: -webkit-linear-gradient(to left, #cbad6d, #d53369);
+  background: linear-gradient(to left, #cbad6d, #d53369); 
+  color: #333;
+}
+
+h1 {
+	font-size: 36px;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+i {
+	vertical-align: middle;
+	color: #626262;
+}
+
+.page-title {
+	text-align: center;
+}
+
+.todo-content {
+	max-width: 650px;
+	width: 100%;
+	margin: 0 auto;
+	margin-top: 60px;
+	background-color: #fff;
+	padding: 15px; 
+	box-shadow: 0 0 4px rgba(0,0,0,.14), 0 4px 8px rgba(0,0,0,.28);
+}
+
+.todo-content .form-control {
+  width: 100%;
+  height: 50px;
+  font-size: 16px;
+  padding-left: 15px;
+  outline: none;
+}
+
+.todo-content .form-control:focus {
+	border: 1px solid #626262;
+}
+
+.todo-content .todo-create {
+  padding-bottom: 30px;
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.todo-content .alert-danger {
+	padding-left: 15px;
+  font-size: 14px;
+  color: red;
+  padding-top: 5px;
+}
+
+.todo-content ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	max-height: 450px;
+	padding-left: 15px;
+	padding-right: 15px;
+	margin-left: -15px;
+	margin-right: -15px;
+	overflow-y: scroll;
+}
+
+.todo-content ul li {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #E8E8E8;
+}
+
+.todo-content ul li span {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.todo-content .todo-title {
+	max-width: 350px;
+	max-width: 65%;
+	margin-left: 10px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.todo-content .todo-completed {
+	display: inline-block;
+	text-align: center;
+	width:35px;
+	height:35px;
+	cursor: pointer;
+}
+
+.todo-content .todo-completed i {
+	font-size: 20px;
+}
+
+.todo-content .todo-actions {
+		float: right;
+}
+
+.todo-content .todo-actions i {
+		font-size: 17px;
+}
+
+.todo-content .todo-actions a {
+	display: inline-block;
+	text-align: center;
+	width: 35px;
+	height: 35px;
+	cursor: pointer;
+}
+
+.todo-content .todo-actions a:hover {
+	background-color: #f4f4f4;
+}
+
+.no-todos {
+	text-align: center;
+}
+
+.toggle-completed-checkbox:before {
+	content: 'check_box_outline_blank';
+}
+
+li.completed .toggle-completed-checkbox:before {
+	content: 'check_box';
+}
+
+li.completed .todo-title {
+	text-decoration: line-through;
+	color: #757575;
+}
+
+li.completed i {
+	color: #757575;
+}

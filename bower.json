@@ -1,7 +1,0 @@
-{
-  "name": "todoapp",
-  "dependencies": {
-    "angular": "^1.5.2",
-    "bootstrap-css-only": "^3.3.6"
-  }
-}
