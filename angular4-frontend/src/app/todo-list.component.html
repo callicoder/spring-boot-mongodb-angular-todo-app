@@ -7,7 +7,7 @@
     		       name="title" [(ngModel)]="newTodo.title"
     		       #title="ngModel" >
 
-    		<div *ngIf="title.errors && (title.dirty || title.touched)"
+    		<div *ngIf="title.errors && title.dirty"
     		     class="alert alert-danger">
     		    <div [hidden]="!title.errors.required">
     		      Title is required.
@@ -17,25 +17,36 @@
     </div>
     <ul class="todo-list">
       <li *ngFor="let todo of todos" [class.completed]= "todo.completed === true" >
-        <a class="todo-completed" (click)="toggleCompleted(todo)">
-        	<i class="material-icons toggle-completed-checkbox"></i> 
-        </a> 
-        <span class="todo-title">
-        	{{todo.title}}
-        </span>
-        <span class="todo-actions">
-            <a (click)="updateTodo(todo)">
-            	<i class="material-icons edit">edit</i>
-            </a>
-            <a (click)="deleteTodo(todo.id)">
-            	<i class="material-icons delete">clear</i>
-            </a>
-        </span>
+        <div class="todo-row" *ngIf="!editing || editingTodo.id != todo.id">
+            <a class="todo-completed" (click)="toggleCompleted(todo)">
+            	<i class="material-icons toggle-completed-checkbox"></i> 
+            </a> 
+            <span class="todo-title">
+            	{{todo.title}}
+            </span>
+            <span class="todo-actions">
+                <a (click)="editTodo(todo)">
+                	<i class="material-icons edit">edit</i>
+                </a>
+                <a (click)="deleteTodo(todo.id)">
+                	<i class="material-icons delete">clear</i>
+                </a>
+            </span>
+        </div>
+        <div class="todo-edit" *ngIf="editing && editingTodo.id === todo.id">
+            <input class="form-control" type="text" 
+             [(ngModel)]="editingTodo.title" required>
+            <span class="edit-actions">
+                <a (click)="updateTodo(editingTodo)">
+                  <i class="material-icons">done</i>
+                </a>
+                <a (click)="clearEditing()">
+                  <i class="material-icons">clear</i>
+                </a>
+            </span>
+        </div>
       </li>
     </ul>
-    <div class="no-todos" *ngIf="!todos">
-        <p>Loading...</p>
-    </div>
     <div class="no-todos" *ngIf="todos && todos.length == 0">
         <p>No Todos Found!</p>
     </div>

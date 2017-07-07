@@ -22,6 +22,10 @@ i {
 	color: #626262;
 }
 
+input {
+  border: 1px solid #E8E8E8;
+}
+
 .page-title {
 	text-align: center;
 }
@@ -36,16 +40,20 @@ i {
 	box-shadow: 0 0 4px rgba(0,0,0,.14), 0 4px 8px rgba(0,0,0,.28);
 }
 
-.todo-content .form-control {
-  width: 100%;
-  height: 50px;
+.form-control {
   font-size: 16px;
   padding-left: 15px;
   outline: none;
+  border: 1px solid #E8E8E8;
 }
 
-.todo-content .form-control:focus {
+.form-control:focus {
 	border: 1px solid #626262;
+}
+
+.todo-content .form-control {
+	width: 100%;
+  height: 50px;
 }
 
 .todo-content .todo-create {
@@ -84,8 +92,7 @@ i {
 }
 
 .todo-content .todo-title {
-	max-width: 350px;
-	max-width: 65%;
+	width: calc(100% - 160px);
 	margin-left: 10px;
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -103,15 +110,15 @@ i {
 	font-size: 20px;
 }
 
-.todo-content .todo-actions {
+.todo-content .todo-actions, .todo-content .edit-actions {
 		float: right;
 }
 
-.todo-content .todo-actions i {
+.todo-content .todo-actions i, .todo-content .edit-actions i {
 		font-size: 17px;
 }
 
-.todo-content .todo-actions a {
+.todo-content .todo-actions a, .todo-content .edit-actions a {
 	display: inline-block;
 	text-align: center;
 	width: 35px;
@@ -119,8 +126,16 @@ i {
 	cursor: pointer;
 }
 
-.todo-content .todo-actions a:hover {
+.todo-content .todo-actions a:hover, .todo-content .edit-actions a:hover {
 	background-color: #f4f4f4;
+}
+
+.todo-content .todo-edit input {
+	width: calc(100% - 80px);
+	height: 35px;
+}
+.todo-content .edit-actions {
+	text-align: right;
 }
 
 .no-todos {
