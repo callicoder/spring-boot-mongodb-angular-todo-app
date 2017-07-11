@@ -32,7 +32,7 @@ Alternatively, you can run the app without packaging it using -
 mvn spring-boot:run
 ```
 
-You can browse the backend server at <http://localhost:8080>.
+The backend server will start at <http://localhost:8080>.
 
 **3. Run the frontend app using npm**
 
