@@ -22,6 +22,13 @@ git clone git@github.com:callicoder/spring-boot-mongodb-angular-4.git
 
 ```bash
 cd spring-boot-backend
+mvn package
+java -jar target/todoapp-1.0.0.jar
+```
+
+Alternatively, you can run the app without packaging it using -
+
+```bash
 mvn spring-boot:run
 ```
 
