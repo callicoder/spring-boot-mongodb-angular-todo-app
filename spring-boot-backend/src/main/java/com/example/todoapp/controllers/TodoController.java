@@ -1,16 +1,14 @@
-package todoapp.controllers;
-
-import java.util.List;
+package com.example.todoapp.controllers;
 
 import javax.validation.Valid;
-
-import todoapp.models.Todo;
-import todoapp.repositories.TodoRepository;
+import com.example.todoapp.models.Todo;
+import com.example.todoapp.repositories.TodoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api")
@@ -59,5 +57,4 @@ public class TodoController {
     public void deleteTodo(@PathVariable("id") String id) {
         todoRepository.delete(id);
     }
-
 }
