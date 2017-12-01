@@ -1,6 +1,6 @@
-# Spring Boot, MongoDB, Angular-4 Restful API Tutorial
+# Spring Boot, MongoDB, Angular Restful API Tutorial
 
-Build a Fully-Fledged Todo App with Spring Boot & MongoDB in the Backend and Angular 4 in the frontend.
+Build a Fully-Fledged Todo App with Spring Boot & MongoDB in the Backend and Angular in the frontend.
 
 ## Requirements
 
@@ -15,7 +15,7 @@ Build a Fully-Fledged Todo App with Spring Boot & MongoDB in the Backend and Ang
 **1. Clone the application**
 
 ```bash
-git clone git@github.com:callicoder/spring-boot-mongodb-angular-4.git
+git clone git@github.com:callicoder/spring-boot-mongodb-angular-todo-app.git
 ```
 
 **2. Build and run the backend app using maven**
@@ -37,7 +37,7 @@ The backend server will start at <http://localhost:8080>.
 **3. Run the frontend app using npm**
 
 ```bash
-cd angular4-frontend
+cd angular-frontend
 npm install
 ```
 
