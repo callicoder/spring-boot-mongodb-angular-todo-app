@@ -2,34 +2,33 @@
     <h1 class="page-title">My Todos</h1>
     <div class="todo-create">
       <form #todoForm="ngForm" (ngSubmit) = "createTodo(todoForm)" novalidate>
-    		<input type="text" id="title" class="form-control" placeholder="Type a todo and press enter..." 
-    		       required
-    		       name="title" [(ngModel)]="newTodo.title"
-    		       #title="ngModel" >
-
-    		<div *ngIf="title.errors && title.dirty"
-    		     class="alert alert-danger">
-    		    <div [hidden]="!title.errors.required">
-    		      Title is required.
-    		    </div>
-    		</div>
-    	</form>
+        <input type="text" id="title" class="form-control" placeholder="Type a todo and press enter..." 
+               required
+               name="title" [(ngModel)]="newTodo.title"
+               #title="ngModel" >
+        <div *ngIf="title.errors && title.dirty"
+             class="alert alert-danger">
+            <div [hidden]="!title.errors.required">
+              Title is required.
+            </div>
+        </div>
+      </form>
     </div>
     <ul class="todo-list">
       <li *ngFor="let todo of todos" [class.completed]= "todo.completed === true" >
         <div class="todo-row" *ngIf="!editing || editingTodo.id != todo.id">
             <a class="todo-completed" (click)="toggleCompleted(todo)">
-            	<i class="material-icons toggle-completed-checkbox"></i> 
+              <i class="material-icons toggle-completed-checkbox"></i> 
             </a> 
             <span class="todo-title">
-            	{{todo.title}}
+              {{todo.title}}
             </span>
             <span class="todo-actions">
                 <a (click)="editTodo(todo)">
-                	<i class="material-icons edit">edit</i>
+                  <i class="material-icons edit">edit</i>
                 </a>
                 <a (click)="deleteTodo(todo.id)">
-                	<i class="material-icons delete">clear</i>
+                  <i class="material-icons delete">clear</i>
                 </a>
             </span>
         </div>

@@ -9,48 +9,48 @@ import {NgForm} from '@angular/forms';
 })
 
 export class TodoListComponent implements OnInit {
-	todos: Todo[];
+  todos: Todo[];
   newTodo: Todo = new Todo();
   editing: boolean = false;
   editingTodo: Todo = new Todo();
 
-	constructor(
-	  private todoService: TodoService,
-	) {}
+  constructor(
+    private todoService: TodoService,
+  ) {}
 
-	ngOnInit(): void {
-		this.getTodos();
+  ngOnInit(): void {
+    this.getTodos();
   }
 
   getTodos(): void {
     this.todoService.getTodos()
-      .then(todos => this.todos = todos );  	
+      .then(todos => this.todos = todos );    
   }
 
   createTodo(todoForm: NgForm): void {
     this.todoService.createTodo(this.newTodo)
       .then(createTodo => {        
         todoForm.reset();
-	      this.newTodo = new Todo();
-	      this.todos.unshift(createTodo)
+        this.newTodo = new Todo();
+        this.todos.unshift(createTodo)
       });
   }
 
   deleteTodo(id: string): void {
-  	this.todoService.deleteTodo(id)
-  	.then(() => {
-  		this.todos = this.todos.filter(todo => todo.id != id);
-  	});
+    this.todoService.deleteTodo(id)
+    .then(() => {
+      this.todos = this.todos.filter(todo => todo.id != id);
+    });
   }
 
   updateTodo(todoData: Todo): void {
     console.log(todoData);
-  	this.todoService.updateTodo(todoData)
-  	.then(updatedTodo => {
-  		let existingTodo = this.todos.find(todo => todo.id === updatedTodo.id);
-  		Object.assign(existingTodo, updatedTodo);
+    this.todoService.updateTodo(todoData)
+    .then(updatedTodo => {
+      let existingTodo = this.todos.find(todo => todo.id === updatedTodo.id);
+      Object.assign(existingTodo, updatedTodo);
       this.clearEditing();
-  	});
+    });
   }
 
   toggleCompleted(todoData: Todo): void {
@@ -71,5 +71,4 @@ export class TodoListComponent implements OnInit {
     this.editingTodo = new Todo();
     this.editing = false;
   }
-
 }

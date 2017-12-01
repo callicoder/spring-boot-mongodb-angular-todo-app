@@ -1,10 +1,10 @@
-import { Angular4FrontendPage } from './app.po';
+import { AngularFrontendPage } from './app.po';
 
-describe('angular4-frontend App', () => {
-  let page: Angular4FrontendPage;
+describe('angular-frontend App', () => {
+  let page: AngularFrontendPage;
 
   beforeEach(() => {
-    page = new Angular4FrontendPage();
+    page = new AngularFrontendPage();
   });
 
   it('should display welcome message', () => {
