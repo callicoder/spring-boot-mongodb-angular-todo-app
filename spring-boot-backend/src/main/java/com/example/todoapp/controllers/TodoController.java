@@ -5,7 +5,6 @@ import com.example.todoapp.models.Todo;
 import com.example.todoapp.repositories.TodoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -32,29 +31,29 @@ public class TodoController {
 
     @GetMapping(value="/todos/{id}")
     public ResponseEntity<Todo> getTodoById(@PathVariable("id") String id) {
-        Todo todo = todoRepository.findOne(id);
-        if(todo == null) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        } else {
-            return new ResponseEntity<>(todo, HttpStatus.OK);
-        }
+        return todoRepository.findById(id)
+                .map(todo -> ResponseEntity.ok().body(todo))
+                .orElse(ResponseEntity.notFound().build());
     }
 
     @PutMapping(value="/todos/{id}")
     public ResponseEntity<Todo> updateTodo(@PathVariable("id") String id,
                                            @Valid @RequestBody Todo todo) {
-        Todo todoData = todoRepository.findOne(id);
-        if(todoData == null) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-        todoData.setTitle(todo.getTitle());
-        todoData.setCompleted(todo.getCompleted());
-        Todo updatedTodo = todoRepository.save(todoData);
-        return new ResponseEntity<>(updatedTodo, HttpStatus.OK);
+        return todoRepository.findById(id)
+                .map(todoData -> {
+                    todoData.setTitle(todo.getTitle());
+                    todoData.setCompleted(todo.getCompleted());
+                    Todo updatedTodo = todoRepository.save(todoData);
+                    return ResponseEntity.ok().body(updatedTodo);
+                }).orElse(ResponseEntity.notFound().build());
     }
 
     @DeleteMapping(value="/todos/{id}")
-    public void deleteTodo(@PathVariable("id") String id) {
-        todoRepository.delete(id);
+    public ResponseEntity<?> deleteTodo(@PathVariable("id") String id) {
+        return todoRepository.findById(id)
+                .map(todo -> {
+                    todoRepository.deleteById(id);
+                    return ResponseEntity.ok().build();
+                }).orElse(ResponseEntity.notFound().build());
     }
 }
