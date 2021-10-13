@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TodoService } from './todo.service';
 import { Todo } from './todo';
 import {NgForm} from '@angular/forms';
@@ -9,7 +9,7 @@ import {NgForm} from '@angular/forms';
 })
 
 export class TodoListComponent implements OnInit {
-  todos: Todo[];
+  todos: Todo[] = [];
   newTodo: Todo = new Todo();
   editing: boolean = false;
   editingTodo: Todo = new Todo();
@@ -24,12 +24,12 @@ export class TodoListComponent implements OnInit {
 
   getTodos(): void {
     this.todoService.getTodos()
-      .then(todos => this.todos = todos );    
+      .subscribe(todos => this.todos = todos );    
   }
 
   createTodo(todoForm: NgForm): void {
     this.todoService.createTodo(this.newTodo)
-      .then(createTodo => {        
+      .subscribe(createTodo => {        
         todoForm.reset();
         this.newTodo = new Todo();
         this.todos.unshift(createTodo)
@@ -38,7 +38,7 @@ export class TodoListComponent implements OnInit {
 
   deleteTodo(id: string): void {
     this.todoService.deleteTodo(id)
-    .then(() => {
+    .subscribe(() => {
       this.todos = this.todos.filter(todo => todo.id != id);
     });
   }
@@ -46,7 +46,7 @@ export class TodoListComponent implements OnInit {
   updateTodo(todoData: Todo): void {
     console.log(todoData);
     this.todoService.updateTodo(todoData)
-    .then(updatedTodo => {
+    .subscribe(updatedTodo => {
       let existingTodo = this.todos.find(todo => todo.id === updatedTodo.id);
       Object.assign(existingTodo, updatedTodo);
       this.clearEditing();
@@ -56,7 +56,7 @@ export class TodoListComponent implements OnInit {
   toggleCompleted(todoData: Todo): void {
     todoData.completed = !todoData.completed;
     this.todoService.updateTodo(todoData)
-    .then(updatedTodo => {
+    .subscribe(updatedTodo => {
       let existingTodo = this.todos.find(todo => todo.id === updatedTodo.id);
       Object.assign(existingTodo, updatedTodo);
     });
